@@ -1,5 +1,6 @@
 input.onButtonPressed(Button.A, function () {
-    radio.sendString(PAQUETE)
+    radio.sendString("" + (paquete_ping))
+    paquete_ping = input.runningTime()
 })
 radio.onReceivedString(function (receivedString) {
     Dirección_origen_recibida = receivedString.substr(0, 2)
@@ -12,13 +13,13 @@ radio.onReceivedString(function (receivedString) {
 let Mensaje_recibido = ""
 let Dirección_destino_recibida = ""
 let Dirección_origen_recibida = ""
-let PAQUETE = ""
+let paquete_ping = 0
 let Dirección_destino = ""
 let Dirección_origen = "AR"
 Dirección_destino = "GP"
 let CABECERA = "" + Dirección_origen + Dirección_destino
-let MENSAJE = "tremendo culo"
-PAQUETE = "" + CABECERA + MENSAJE
+let MENSAJE = "ping"
+paquete_ping = "" + CABECERA + MENSAJE
 basic.forever(function () {
     radio.setGroup(22)
 })
